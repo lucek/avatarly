@@ -1,9 +1,21 @@
 require 'rvg/rvg'
 
 class Avatarly
-  def self.draw_square(text, size, background, font_color)
-    background ||= '#000000'
-    font_color ||= '#FFFFFF'
+  BACKGROUND_COLORS = [ 
+      "#ff4040", "#7f2020", "#cc5c33", "#734939", "#bf9c8f", "#995200", 
+      "#4c2900", "#f2a200", "#ffd580", "#332b1a", "#4c3d00", "#ffee00", 
+      "#b0b386", "#64664d", "#6c8020", "#c3d96c", "#143300", "#19bf00", 
+      "#53a669", "#bfffd9", "#40ffbf", "#1a332e", "#00b3a7", "#165955", 
+      "#00b8e6", "#69818c", "#005ce6", "#6086bf", "#000e66", "#202440", 
+      "#393973", "#4700b3", "#2b0d33", "#aa86b3", "#ee00ff", "#bf60b9", 
+      "#4d3949", "#ff00aa", "#7f0044", "#f20061", "#330007", "#d96c7b" 
+    ].freeze
+
+  def self.generate_avatar(text, opts={})
+    text             = text.to_s
+    background_color = opts[:background_color] ? opts[:background_color] : BACKGROUND_COLORS.sample
+    font_color       = opts[:font_color]       ? opts[:font_color]       : '#FFFFFF'
+    size             = opts[:size]             ? opts[:size].to_i        : 32
 
     if text.is_email?
       text = text.split("@").first
@@ -20,14 +32,20 @@ class Avatarly
       if text.size > 1
         text = text[0][0] + text[1][0]
       else
-        text = text[0][0]
+        text = text.first.split(".")
+
+        if text.size > 1
+          text = text[0][0] + text[1][0]
+        else
+          text = text[0][0]
+        end
       end
     end
 
     text = text.upcase
 
     rvg = Magick::RVG.new(size, size).viewbox(0, 0, size, size) do |canvas|
-      canvas.background_fill = background
+      canvas.background_fill = background_color
     end
 
     img = rvg.draw
@@ -36,9 +54,7 @@ class Avatarly
     drawable = Magick::Draw.new
     drawable.pointsize = size / 2
     drawable.fill = font_color
-    drawable.font_family = "Arial"
     drawable.gravity = Magick::CenterGravity
-    drawable.font_weight = Magick::BoldWeight
     drawable.annotate(img, 0, 0, 0, 0, text)
 
     return img.to_blob
