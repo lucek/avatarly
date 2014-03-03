@@ -1,3 +1,5 @@
+![](http://f.cl.ly/items/0M3L273P2r2l0A3L052M/avatars.png)
+
 # avatarly
 
 avatarly is a simple gem for creating gmail-like user avatars based on user email or any other string passed
