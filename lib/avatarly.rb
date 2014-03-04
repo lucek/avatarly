@@ -17,7 +17,7 @@ class Avatarly
     font_color       = opts[:font_color]       ? opts[:font_color]       : '#FFFFFF'
     size             = opts[:size]             ? opts[:size].to_i        : 32
 
-    if text.dup.is_email?
+    if text.dup.is_email? #duplicate used due to the fact that is_email? method changes encoding to binary
       text = text.split("@").first
 
       if text.include?(".")
