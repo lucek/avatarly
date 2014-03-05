@@ -40,7 +40,8 @@ the only required parameter is <tt>text</tt>. Other options that you can pass ar
 
 * <tt>background_color</tt> (#AABBCC)
 * <tt>font_color</tt> (#AABBCC)
-* <tt>size</tt>
+* <tt>size</tt>  (default: 32)
+* <tt>font_size</tt> (default: size / 2)
 
 As a result you will get an image blob - rest is up to you, do whatever you want with it.
 
