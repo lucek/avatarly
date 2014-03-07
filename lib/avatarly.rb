@@ -13,10 +13,11 @@ class Avatarly
 
   def self.generate_avatar(text, opts={})
     text             = text.to_s
-    background_color = opts[:background_color] ? opts[:background_color] : BACKGROUND_COLORS.sample
-    font_color       = opts[:font_color]       ? opts[:font_color]       : '#FFFFFF'
-    size             = opts[:size]             ? opts[:size].to_i        : 32
-    font_size        = opts[:font_size]        ? opts[:font_size].to_i   : size / 2
+    background_color = opts[:background_color]                      ? opts[:background_color] : BACKGROUND_COLORS.sample
+    font_color       = opts[:font_color]                            ? opts[:font_color]       : '#FFFFFF'
+    size             = opts[:size]                                  ? opts[:size].to_i        : 32
+    font             = opts[:font] && Pathname(opts[:font]).exist?  ? opts[:font].to_s        : "#{lib}/Roboto.ttf"
+    font_size        = opts[:font_size]                             ? opts[:font_size].to_i   : size / 2
 
     if text.dup.is_email? #duplicate used due to the fact that is_email? method changes encoding to binary
       text = text.split("@").first
@@ -54,10 +55,19 @@ class Avatarly
 
     drawable = Magick::Draw.new
     drawable.pointsize = font_size
+    drawable.font = font
     drawable.fill = font_color
     drawable.gravity = Magick::CenterGravity
     drawable.annotate(img, 0, 0, 0, 0, text)
 
     return img.to_blob
+  end
+
+  def self.root
+    File.expand_path '../..', __FILE__
+  end
+
+  def self.lib
+    File.join root, 'lib'
   end
 end
