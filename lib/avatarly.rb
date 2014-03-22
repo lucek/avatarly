@@ -1,4 +1,5 @@
 require 'rvg/rvg'
+require 'rfc822'
 
 class Avatarly
   BACKGROUND_COLORS = [ 
