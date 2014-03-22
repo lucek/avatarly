@@ -12,6 +12,25 @@ class Avatarly
       "#4d3949", "#ff00aa", "#7f0044", "#f20061", "#330007", "#d96c7b" 
     ].freeze
 
+  def self.initials_for_separator(text, separator)
+    if text.include?(separator)
+      text = text.split(separator)
+      text[0][0] + text[1][0]
+    else
+      text[0][0]
+    end
+  end
+
+  def self.initials(text)
+    if text.dup.is_email? # duplicate used due to the fact that is_email? method changes encoding to binary
+      initials_for_separator(text.split("@").first, ".")
+    elsif text.include?(" ")
+      initials_for_separator(text, " ")
+    else
+      initials_for_separator(text, ".")
+    end
+  end
+
   def self.generate_avatar(text, opts={})
     text             = text.to_s
     background_color = opts[:background_color]                      ? opts[:background_color] : BACKGROUND_COLORS.sample
@@ -20,32 +39,7 @@ class Avatarly
     font             = opts[:font] && Pathname(opts[:font]).exist?  ? opts[:font].to_s        : "#{lib}/Roboto.ttf"
     font_size        = opts[:font_size]                             ? opts[:font_size].to_i   : size / 2
 
-    if text.dup.is_email? #duplicate used due to the fact that is_email? method changes encoding to binary
-      text = text.split("@").first
-
-      if text.include?(".")
-        text = text.split(".")
-        text = text[0][0] + text[1][0]
-      else
-        text = text[0][0]
-      end
-    else
-      text = text.split(" ")
-
-      if text.size > 1
-        text = text[0][0] + text[1][0]
-      else
-        text = text.first.split(".")
-
-        if text.size > 1
-          text = text[0][0] + text[1][0]
-        else
-          text = text[0][0]
-        end
-      end
-    end
-
-    text = text.upcase
+    text = initials(text).upcase
 
     rvg = Magick::RVG.new(size, size).viewbox(0, 0, size, size) do |canvas|
       canvas.background_fill = background_color

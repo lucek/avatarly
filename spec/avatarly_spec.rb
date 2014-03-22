@@ -36,4 +36,26 @@ describe Avatarly do
       end
     end
   end
+
+  describe '.initials' do
+    it 'uses dot-separated words when input is email' do
+      described_class.initials('foo.bar@example.com').should == 'fb'
+    end
+
+    it 'uses single character when email does not contain dot' do
+      described_class.initials('foobar@example.com').should == 'f'
+    end
+
+    it 'uses space-separated words when input is not an email' do
+      described_class.initials('foo bar').should == 'fb'
+    end
+
+    it 'uses dot-separated words when input does not contain spaces' do
+      described_class.initials('foo.bar').should == 'fb'
+    end
+
+    it 'return single character when input does not contain spaces nor dots' do
+      described_class.initials('foo_bar').should == 'f'
+    end
+  end
 end
