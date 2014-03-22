@@ -32,21 +32,21 @@ class Avatarly
     end
 
     def generate_image(text, opts)
-      rvg = Magick::RVG.new(opts[:size], opts[:size]).viewbox(0, 0, opts[:size], opts[:size]) do |canvas|
+      image = Magick::RVG.new(opts[:size], opts[:size]).viewbox(0, 0, opts[:size], opts[:size]) do |canvas|
         canvas.background_fill = opts[:background_color]
-      end
-
-      image = rvg.draw
+      end.draw
       image.format = 'png'
+      draw_text(image, text, opts)
+      image
+    end
 
+    def draw_text(canvas, text, opts)
       Magick::Draw.new do
         self.pointsize = opts[:font_size]
         self.font = opts[:font]
         self.fill = opts[:font_color]
         self.gravity = Magick::CenterGravity
-      end.annotate(image, 0, 0, 0, 0, text)
-
-      image
+      end.annotate(canvas, 0, 0, 0, 0, text)
     end
 
     def initials(text)
