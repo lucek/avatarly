@@ -2,7 +2,7 @@ require 'rvg/rvg'
 require 'rfc822'
 
 class Avatarly
-  BACKGROUND_COLORS = [ 
+  BACKGROUND_COLORS = [
       "#ff4040", "#7f2020", "#cc5c33", "#734939", "#bf9c8f", "#995200",
       "#4c2900", "#f2a200", "#ffd580", "#332b1a", "#4c3d00", "#ffee00",
       "#b0b386", "#64664d", "#6c8020", "#c3d96c", "#143300", "#19bf00",
@@ -50,7 +50,7 @@ class Avatarly
     end
 
     def initials(text)
-      if text.dup.is_email? # duplicate used due to the fact that is_email? method changes encoding to binary
+      if text.is_email?
         initials_for_separator(text.split("@").first, ".")
       elsif text.include?(" ")
         initials_for_separator(text, " ")
