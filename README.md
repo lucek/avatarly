@@ -46,6 +46,13 @@ the only required parameter is <tt>text</tt>. Other options that you can pass ar
 
 As a result you will get an image blob - rest is up to you, do whatever you want with it.
 
+For instance you can store avatar in directory with images:
+
+      img = Avatarly.generate_avatar(text, opts={})
+      File.open('public/images/avatar_name.png', 'wb') do |f|
+        f.write img
+      end
+
 ## License
 
 MIT
