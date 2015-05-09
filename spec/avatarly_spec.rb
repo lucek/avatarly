@@ -34,6 +34,12 @@ describe Avatarly do
                                                  background_color: "#000000")
         assert_image_equality(result, reference_image(:H_black_white_32))
       end
+
+      it 'does not break if input has leading or trailing space' do
+        result = described_class.generate_avatar(" HelloWorld ",
+                                                 background_color: "#000000")
+        assert_image_equality(result, reference_image(:H_black_white_32))
+      end
     end
   end
 end
