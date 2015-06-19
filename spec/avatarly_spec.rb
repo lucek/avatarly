@@ -16,6 +16,21 @@ describe Avatarly do
       assert_image_equality(result, reference_image(:HW_white_black_64))
     end
 
+    context 'accepts parameters for format' do
+      it '.png'  do
+        result = described_class.generate_avatar("hello.world@example.com",
+                                                 format: "png")       
+        assert_image_format(result, :png)
+      end
+
+      it '.jpg' do
+        result = described_class.generate_avatar("hello.world@example.com",
+                                                 format: "jpeg")
+        assert_image_format(result, :jpeg)
+      end
+
+    end
+
     context 'non-email input' do
       it 'uses first letters of first two space separated words' do
         result = described_class.generate_avatar("hello World",

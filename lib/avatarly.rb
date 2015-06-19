@@ -35,7 +35,7 @@ class Avatarly
       image = Magick::RVG.new(opts[:size], opts[:size]).viewbox(0, 0, opts[:size], opts[:size]) do |canvas|
         canvas.background_fill = opts[:background_color]
       end.draw
-      image.format = 'png'
+      image.format = opts[:format]
       draw_text(image, text, opts)
       image
     end
@@ -81,6 +81,7 @@ class Avatarly
       opts[:font] = default_options[:font] unless Pathname(opts[:font]).exist?
       opts[:font_size] ||= opts[:size] / 2
       opts[:font_size] = opts[:font_size].to_i
+      opts[:format] ||= 'png'
       opts
     end
   end
