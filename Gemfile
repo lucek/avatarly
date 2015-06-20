@@ -6,4 +6,5 @@ group :development do
   gem 'rspec'
   gem 'chunky_png'
   gem 'fastimage'
+  gem 'pry'
 end
