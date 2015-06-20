@@ -46,6 +46,7 @@ the only required parameter is <tt>text</tt>. Other options that you can pass ar
 * <tt>size</tt>  (default: 32)
 * <tt>font</tt>  (path to font - e.g. "#{Rails.root}/your_font.ttf")
 * <tt>font_size</tt> (default: size / 2)
+* <tt>format</tt> (default: png)
 
 As a result you will get an image blob - rest is up to you, do whatever you want with it.
 
