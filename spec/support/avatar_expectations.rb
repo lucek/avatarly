@@ -11,7 +11,7 @@ module AvatarExpectations
     expect(ChunkyPNG::Image.from_blob(first)).to eql ChunkyPNG::Image.from_blob(second)
   end
 
-	def assert_image_format(image, format)		
+  def assert_image_format(image, format)
     temp_file = Tempfile.new('avatarly')
     File.open(temp_file, 'wb') do |f|
       f.write image
@@ -19,9 +19,4 @@ module AvatarExpectations
 
     expect(FastImage.type(temp_file)).to eql(format)
   end
-
-
-
 end
-
-

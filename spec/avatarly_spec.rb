@@ -19,7 +19,7 @@ describe Avatarly do
     context 'accepts parameters for format' do
       it '.png'  do
         result = described_class.generate_avatar("hello.world@example.com",
-                                                 format: "png")       
+                                                 format: "png")
         assert_image_format(result, :png)
       end
 
@@ -28,7 +28,6 @@ describe Avatarly do
                                                  format: "jpeg")
         assert_image_format(result, :jpeg)
       end
-
     end
 
     context 'non-email input' do
