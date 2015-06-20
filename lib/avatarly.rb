@@ -36,7 +36,7 @@ class Avatarly
       image = Magick::RVG.new(opts[:size], opts[:size]).viewbox(0, 0, opts[:size], opts[:size]) do |canvas|
         canvas.background_fill = opts[:background_color]
       end.draw
-      image.format = 'png'
+      image.format = opts[:format]
       draw_text(image, text, opts)
       image
     end
@@ -73,7 +73,8 @@ class Avatarly
       { background_color: BACKGROUND_COLORS.sample,
         font_color: '#FFFFFF',
         size: 32,
-        font: "#{fonts}/Roboto.ttf" }
+        font: "#{fonts}/Roboto.ttf",
+        format: "png" }
     end
 
     def parse_options(opts)

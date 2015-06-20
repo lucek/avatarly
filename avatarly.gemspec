@@ -3,7 +3,7 @@ Gem::Specification.new do |s|
   s.add_runtime_dependency('rfc822')
 
   s.name        = "avatarly"
-  s.version     = "1.1.0"
+  s.version     = "1.1.1"
   s.summary     = "Simple gem for creating gmail-like user avatars with initials."
   s.description = "Avatarly is a simple gem for Ruby that creates gmail-like avatars with initials, inspired by avatar-generator by johnnyhalife. See homepage for more information."
   s.authors     = ["Lukasz Odziewa"]
