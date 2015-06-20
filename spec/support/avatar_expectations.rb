@@ -3,12 +3,22 @@ module AvatarExpectations
     File.expand_path("../../fixtures/#{name}", __FILE__)
   end
 
-  def reference_image(name)
-    ChunkyPNG::Image.from_file(resource_file("#{name}.png")).to_blob
-  end
+  def assert_image_equality(actual_image_blob, expected_image_name, hamming_distance = 0)
+    actual_image_path = resource_file('temp_generated_image.png')
+    expected_image_path = resource_file("#{expected_image_name}.png")
 
-  def assert_image_equality(first, second)
-    expect(ChunkyPNG::Image.from_blob(first)).to eql ChunkyPNG::Image.from_blob(second)
+    File.open(actual_image_path, 'wb') do |f|
+      f.write actual_image_blob
+    end
+
+    actual_image = Phashion::Image.new(actual_image_path)
+    expected_image = Phashion::Image.new(expected_image_path)
+
+    #puts "Hamming distance between two images: #{actual_image.distance_from(expected_image)}"
+
+    expect(actual_image.duplicate?(expected_image, threshold: hamming_distance)).to eq true
+
+    File.delete(actual_image_path)
   end
 
   def assert_image_format(image, format)
