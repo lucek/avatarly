@@ -2,6 +2,7 @@
 
 # avatarly
 
+[![Gem Version](https://badge.fury.io/rb/avatarly.png)][gem_version]
 [![Build Status](https://travis-ci.org/lucek/avatarly.svg?branch=master)](https://travis-ci.org/lucek/avatarly)
 
 avatarly is a simple gem for creating gmail-like user avatars based on user email or any other string passed
