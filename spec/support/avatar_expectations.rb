@@ -16,7 +16,7 @@ module AvatarExpectations
 
     #puts "Hamming distance between two images: #{actual_image.distance_from(expected_image)}"
 
-    expect(actual_image.duplicate?(expected_image, threshold: hamming_distance)).to eq true
+    expect(actual_image.duplicate?(expected_image, threshold: hamming_distance)).to be true
 
     File.delete(actual_image_path)
   end
