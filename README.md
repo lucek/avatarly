@@ -2,6 +2,8 @@
 
 # avatarly
 
+[![Build Status](https://travis-ci.org/lucek/avatarly.svg?branch=master)](https://travis-ci.org/lucek/avatarly)
+
 avatarly is a simple gem for creating gmail-like user avatars based on user email or any other string passed
 
 inspired and influenced by https://github.com/johnnyhalife/avatar-generator.rb
