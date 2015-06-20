@@ -1,6 +1,5 @@
 require 'rspec'
 require 'avatarly'
-require 'chunky_png'
 require 'phashion'
 require 'support/avatar_expectations'
 require 'fastimage'
