@@ -3,7 +3,7 @@ module AvatarExpectations
     File.expand_path("../../fixtures/#{name}", __FILE__)
   end
 
-  def assert_image_equality(actual_image_blob, expected_image_name, hamming_distance = 0)
+  def assert_image_equality(actual_image_blob, expected_image_name, hamming_distance = 2)
     actual_image_path = resource_file('temp_generated_image.png')
     expected_image_path = resource_file("#{expected_image_name}.png")
 

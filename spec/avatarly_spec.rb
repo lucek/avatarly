@@ -5,7 +5,7 @@ describe Avatarly do
     it 'generates avatar for given email address' do
       result = described_class.generate_avatar("hello.world@example.com",
                                                background_color: "#000000")
-      assert_image_equality(result, :HW_black_white_32, 32)
+      assert_image_equality(result, :HW_black_white_32, 34)
     end
 
     it 'accepts parameters for size and background and font colors' do
@@ -34,13 +34,13 @@ describe Avatarly do
       it 'uses first letters of first two space separated words' do
         result = described_class.generate_avatar("hello World",
                                                  background_color: "#000000")
-        assert_image_equality(result, :HW_black_white_32, 32)
+        assert_image_equality(result, :HW_black_white_32, 34)
       end
 
       it 'falls back to dot-separated words when no spaces in input' do
         result = described_class.generate_avatar("hello.World",
                                                  background_color: "#000000")
-        assert_image_equality(result, :HW_black_white_32, 32)
+        assert_image_equality(result, :HW_black_white_32, 34)
       end
 
       it 'falls back to single-letter avatar when no dots and spaces found' do
