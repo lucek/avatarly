@@ -14,9 +14,13 @@ module AvatarExpectations
     actual_image = Phashion::Image.new(actual_image_path)
     expected_image = Phashion::Image.new(expected_image_path)
 
-    #puts "Hamming distance between two images: #{actual_image.distance_from(expected_image)}"
+    result = actual_image.duplicate?(expected_image, threshold: hamming_distance)
 
-    expect(actual_image.duplicate?(expected_image, threshold: hamming_distance)).to be true
+    unless result
+      puts "Hamming distance between two images: #{actual_image.distance_from(expected_image)}. Required at least #{hamming_distance}."
+    end
+
+    expect(result).to be true
 
     File.delete(actual_image_path)
   end
