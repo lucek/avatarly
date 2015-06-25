@@ -1,4 +1,4 @@
-![](http://f.cl.ly/items/0M3L273P2r2l0A3L052M/avatars.png)
+[![Demo](http://f.cl.ly/items/0M3L273P2r2l0A3L052M/avatars.png)](http://avatarly.herokuapp.com)
 
 # avatarly
 
