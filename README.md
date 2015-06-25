@@ -9,6 +9,10 @@ avatarly is a simple gem for creating gmail-like user avatars based on user emai
 
 inspired and influenced by https://github.com/johnnyhalife/avatar-generator.rb
 
+# Demo
+
+http://avatarly.herokuapp.com
+
 ## Installation
 
 Avatarly requires ImageMagick to be installed.
