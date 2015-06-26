@@ -15,7 +15,7 @@ class Avatarly
 
   class << self
     def generate_avatar(text, opts={})
-      generate_image(initials(text.to_s.gsub(/\W/,'')).upcase, parse_options(opts)).to_blob
+      generate_image(initials(text.to_s.gsub(/\W/,' ')).upcase, parse_options(opts)).to_blob
     end
 
     def root
