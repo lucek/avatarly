@@ -60,6 +60,11 @@ describe Avatarly do
                                                  background_color: "#000000")
         assert_image_equality(result, :H_black_white_32)
       end
+
+      it 'strips leading/trailing whitespace without striping other whitespaces' do
+        expect(described_class).to receive(:initials).with('Hello World').and_return 'HW'
+        described_class.generate_avatar(' Hello World! ')
+      end
     end
   end
 end
