@@ -71,7 +71,7 @@ class Avatarly
         text = text.split(separator)
         text[0][0] + text[1][0]
       else
-        text[0][0]
+        text[0] || ''
       end
     end
 

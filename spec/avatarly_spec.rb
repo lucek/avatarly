@@ -61,6 +61,12 @@ describe Avatarly do
         assert_image_equality(result, :H_black_white_32)
       end
 
+      it 'does not break if no text found' do
+        result = described_class.generate_avatar(nil,
+                                                 background_color: "#000000")
+        assert_image_equality(result, :black_empty, 34)
+      end
+
       it 'strips leading/trailing whitespace without striping other whitespaces' do
         expect(described_class).to receive(:initials).with('Hello World').and_return 'HW'
         described_class.generate_avatar(' Hello World! ')
