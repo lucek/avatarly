@@ -43,7 +43,7 @@ class Avatarly
         canvas.background_fill = opts[:background_color]
       end.draw
       image.format = opts[:format]
-      draw_text(image, text, opts)
+      draw_text(image, text, opts) if text.length > 0
       image
     end
 
