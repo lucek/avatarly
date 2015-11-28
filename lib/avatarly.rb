@@ -43,7 +43,7 @@ class Avatarly
         canvas.background_fill = opts[:background_color]
       end.draw
       image.format = opts[:format]
-      draw_text(image, text, opts)
+      draw_text(image, text, opts) if text.length > 0
       image
     end
 
@@ -71,7 +71,7 @@ class Avatarly
         text = text.split(separator)
         text[0][0] + text[1][0]
       else
-        text[0][0]
+        text[0] || ''
       end
     end
 
