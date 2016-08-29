@@ -1,4 +1,5 @@
 require 'spec_helper'
+require 'pry'
 
 describe Avatarly do
   describe '.generate_avatar' do
@@ -8,12 +9,14 @@ describe Avatarly do
       assert_image_equality(result, :HW_black_white_32, 34)
     end
 
-    it 'accepts parameters for size and background and font colors' do
-      result = described_class.generate_avatar("hello.world@example.com",
+    it 'accepts parameters for size, background, vertical_offset and font colors' do
+      result = described_class.generate_avatar("hello world",
                                                background_color: "#FFFFFF",
                                                font_color: "#000000",
+                                               vertical_offset: 5,
                                                size: 64)
-      assert_image_equality(result, :HW_white_black_64, 38)
+
+      assert_image_equality(result, :HW_white_black_offset_64, 10)
     end
 
     context 'accepts parameters for format' do
