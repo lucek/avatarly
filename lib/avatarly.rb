@@ -53,7 +53,7 @@ class Avatarly
         self.font = opts[:font]
         self.fill = opts[:font_color]
         self.gravity = Magick::CenterGravity
-      end.annotate(canvas, 0, 0, 0, 0, text)
+      end.annotate(canvas, 0, 0, 0, opts[:vertical_offset], text)
     end
 
     def initials(text)
@@ -79,6 +79,7 @@ class Avatarly
       { background_color: BACKGROUND_COLORS.sample,
         font_color: '#FFFFFF',
         size: 32,
+        vertical_offset: 0,
         font: "#{fonts}/Roboto.ttf",
         format: "png" }
     end
@@ -89,6 +90,7 @@ class Avatarly
       opts[:font] = default_options[:font] unless Pathname(opts[:font]).exist?
       opts[:font_size] ||= opts[:size] / 2
       opts[:font_size] = opts[:font_size].to_i
+      opts[:vertical_offset] = opts[:vertical_offset].to_i
       opts
     end
   end
