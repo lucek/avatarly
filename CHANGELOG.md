@@ -2,6 +2,12 @@
 
 * TODO
 
+### 1.5.0
+
+* Add vertical setting
+
+    https://github.com/lucek/avatarly/pull/13
+
 ### 1.4.0
 
 * Create empty avatar if no text are provided
