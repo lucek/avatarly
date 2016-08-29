@@ -1,5 +1,4 @@
 require 'spec_helper'
-require 'pry'
 
 describe Avatarly do
   describe '.generate_avatar' do
