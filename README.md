@@ -50,6 +50,7 @@ the only required parameter is <tt>text</tt>. Other options that you can pass ar
 * <tt>size</tt>  (default: 32)
 * <tt>font</tt>  (path to font - e.g. "#{Rails.root}/your_font.ttf")
 * <tt>font_size</tt> (default: size / 2)
+* <tt>vertical_offset</tt> (default: 0)
 * <tt>format</tt> (default: png)
 * <tt>lang</tt> (language code if unicode aware upcase required - e.g: :tr, default: nil)
 
