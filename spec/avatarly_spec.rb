@@ -57,6 +57,18 @@ describe Avatarly do
         assert_image_equality(result, :H_black_white_32)
       end
 
+      it 'does not break if input has a space and non-word character' do
+        result = described_class.generate_avatar("H !",
+                                                 background_color: "#000000")
+        assert_image_equality(result, :H_black_white_32)
+      end
+
+      it 'does not break if input has a dot and non-word character' do
+        result = described_class.generate_avatar("H.!",
+                                                 background_color: "#000000")
+        assert_image_equality(result, :H_black_white_32)
+      end
+
       it 'does not break if input has leading or trailing non-word character' do
         result = described_class.generate_avatar("%HelloWorld!",
                                                  background_color: "#000000")
@@ -66,7 +78,7 @@ describe Avatarly do
       it 'does not break if no text found' do
         result = described_class.generate_avatar(nil,
                                                  background_color: "#000000")
-        assert_image_equality(result, :black_empty, 34)
+        assert_image_equality(result, :black_empty, 38)
       end
 
       it 'strips leading/trailing whitespace without striping other whitespaces' do
