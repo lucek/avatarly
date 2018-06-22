@@ -2,6 +2,12 @@
 
 * TODO
 
+### 1.5.1
+
+* Fixed an error when the text has a non-word character and a space next to it
+
+    https://github.com/lucek/avatarly/pull/17
+
 ### 1.5.0
 
 * Add vertical setting
