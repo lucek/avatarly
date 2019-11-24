@@ -17,9 +17,9 @@ class Avatarly
   class << self
     def generate_avatar(text, opts={})
       if opts[:lang]
-        text = UnicodeUtils.upcase(initials(text.to_s.gsub(/[^[[:word:]] ]/,'').strip), opts[:lang])
+        text = UnicodeUtils.upcase(initials(text.to_s.gsub(/[^[[:word:]] ]/,'').strip, opts), opts[:lang])
       else
-        text = initials(text.to_s.gsub(/[^\w ]/,'').strip).upcase
+        text = initials(text.to_s.gsub(/[^\w ]/,'').strip, opts).upcase
       end
       generate_image(text, parse_options(opts)).to_blob
     end
@@ -56,8 +56,10 @@ class Avatarly
       end.annotate(canvas, 0, 0, 0, opts[:vertical_offset], text)
     end
 
-    def initials(text)
-      if text.is_email?
+    def initials(text, opts)
+      if opts[:separator]
+        initials_for_separator(text, opts[:separator])
+      elsif text.is_email?
         initials_for_separator(text.split("@").first, ".")
       elsif text.include?(" ")
         initials_for_separator(text, " ")

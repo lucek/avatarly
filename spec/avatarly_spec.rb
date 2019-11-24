@@ -51,6 +51,13 @@ describe Avatarly do
         assert_image_equality(result, :H_black_white_32)
       end
 
+      it 'can generate using custom separators' do
+        result = described_class.generate_avatar("hfoow",
+                                                 background_color: "#000000",
+                                                 separator: "foo")
+        assert_image_equality(result, :HW_black_white_32, 34)
+      end
+
       it 'does not break if input has leading or trailing space' do
         result = described_class.generate_avatar(" HelloWorld ",
                                                  background_color: "#000000")
@@ -82,7 +89,7 @@ describe Avatarly do
       end
 
       it 'strips leading/trailing whitespace without striping other whitespaces' do
-        expect(described_class).to receive(:initials).with('Hello World').and_return 'HW'
+        expect(described_class).to receive(:initials).with('Hello World', {}).and_return 'HW'
         described_class.generate_avatar(' Hello World! ')
       end
     end
