@@ -2,6 +2,12 @@
 
 * TODO
 
+### 1.6.0
+
+* Allow custom separator to be used in text
+
+    https://github.com/lucek/avatarly/pull/18
+
 ### 1.5.1
 
 * Fixed an error when the text has a non-word character and a space next to it
