@@ -67,3 +67,9 @@ For instance you can store avatar in directory with images:
 ## License
 
 MIT
+
+# Maintainers and support
+
+Thanks for help with the project:
+
+* ![Knapsack Pro logo](https://docs.knapsackpro.com/images/logo.png) [Knapsack Pro](https://knapsackpro.com/?utm_source=github&utm_medium=readme&utm_campaign=avatarly-gem-readme) - learn [how to speed up Ruby and JavaScript tests with CI parallelisation](https://docs.knapsackpro.com/2020/how-to-speed-up-ruby-and-javascript-tests-with-ci-parallelisation)
