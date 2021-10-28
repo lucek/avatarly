@@ -2,6 +2,12 @@
 
 * TODO
 
+### 1.6.1
+
+* Fix: `warning: passing a block without an image argument is deprecated`.
+
+    https://github.com/lucek/avatarly/pull/21
+
 ### 1.6.0
 
 * Allow custom separator to be used in text
