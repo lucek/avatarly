@@ -48,11 +48,11 @@ class Avatarly
     end
 
     def draw_text(canvas, text, opts)
-      Magick::Draw.new do
-        self.pointsize = opts[:font_size]
-        self.font = opts[:font]
-        self.fill = opts[:font_color]
-        self.gravity = Magick::CenterGravity
+      Magick::Draw.new do |md|
+        md.pointsize = opts[:font_size]
+        md.font = opts[:font]
+        md.fill = opts[:font_color]
+        md.gravity = Magick::CenterGravity
       end.annotate(canvas, 0, 0, 0, opts[:vertical_offset], text)
     end
 
